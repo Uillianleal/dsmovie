@@ -1,35 +1,34 @@
-package com.devsuperior.dsmovie.entities;
+package com.devsuperior.dsmovie.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.devsuperior.dsmovie.entities.Movie;
 
-@Entity
-@Table(name = "tb_movie")
-public class Movie {
+public class MovieDTO {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private Double score;
 	private Integer count;
 	private String image;
 	
-	public Movie() {
+	public MovieDTO() {
 		
 	}
 
-	public Movie(Long id, String title, Double score, Integer count, String image) {
+	public MovieDTO(Long id, String title, Double score, Integer count, String image) {
 		this.id = id;
 		this.title = title;
 		this.score = score;
 		this.count = count;
 		this.image = image;
 	}
-
+	
+	public MovieDTO(Movie movie) {
+		id = movie.getId();
+		title = movie.getTittle();
+		score = movie.getScore();
+		count = movie.getCount();
+		image = movie.getImage();
+	}
 
 	public Long getId() {
 		return id;
@@ -39,12 +38,12 @@ public class Movie {
 		this.id = id;
 	}
 
-	public String getTittle() {
+	public String getTitle() {
 		return title;
 	}
 
-	public void setTittle(String tittle) {
-		this.title = tittle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public Double getScore() {
@@ -59,8 +58,8 @@ public class Movie {
 		return count;
 	}
 
-	public void setCaount(Integer caount) {
-		this.count = caount;
+	public void setCount(Integer count) {
+		this.count = count;
 	}
 
 	public String getImage() {
@@ -70,5 +69,8 @@ public class Movie {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+	
+	
 	
 }
